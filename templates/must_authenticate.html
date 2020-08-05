@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div>
+    <p>Must authenticate to view this page</p>
+    <p>
+        <a href="{% url 'signup' %}">Signup</a> or
+        <a href=" {% url 'login' %}">Login</a>
+    </p>
+</div>
+
+</div>
+{% endblock %}

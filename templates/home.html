@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+<style>
+    .blog-posts{
+        max-width: 800px;
+        width: 100%;
+        margin: auto;}
+
+    .post{
+        height: 30px;
+        padding: 10px 10px 10px 10px;
+        background-color: #fafafa;
+        margin-bottom: 10px;
+     }
+</style>
+
+{% block content %}
+    <a href="{% url 'blog:create' %}" style="border: black 1px solid; padding: 3px;">Create post</a>
+    <div class='container'>
+    <div class="blog-posts">
+    {% if blog_posts %}
+    <ol>
+    {% for post in blog_posts %}
+        <li>
+        <div class="post" style="padding: 6px 10px 3px 10px; background-color: #f6f6f6; margin-bottom: 8px;">
+        <a href="{% url 'blog:detail' post.slug %}" style="text-decoration: none;">
+        {{ post }}
+        </a>
+            <div class="post-info" style="background-color: #f1f1f1; font-size:80%; padding-left: 10px; margin: 0 -10px 0 -10px">
+                <a href="{% url 'blog:detail' post.slug %}">Comments: {{ post.comments.count }}</a>
+                upvotes:5
+            </div>
+        </div>
+        </li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+    </div>
+    </div>
+{% include 'snippets/my_first_snippet.html' %}
+    {{ some_string }}
+{% endblock content %}

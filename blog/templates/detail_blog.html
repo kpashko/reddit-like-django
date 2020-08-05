@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .card {
+        max-width: 900px;
+    }
+
+    .container{
+        padding: 20px;
+    }
+    .card-text{
+        border: 1px solid black;
+        padding: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">{{ blog_post.title }}</h2>
+            Updated on {{  blog_post.date_updated }} by {{ blog_post.author }}
+            <hr>
+            <p class="card-text">{{ blog_post.body | safe }}</p>
+        </div>
+        <div class="card-footer">
+        </div>
+        <hr>
+    <a class="btn btn-default" href="{% url 'blog:add_comment_to_blog' blog_post.slug %}">Add comment</a>
+        {% for comment in blog_post.comments.all %}
+            <div class="comment" style="margin: 20px 0 20px 20px; border: black">
+                <div class="date" style="font-size: 80%; font-family: monospace; margin-bottom: 3px;">{{ comment.created_date }}</div>
+                <strong>{{ comment.author }}</strong>
+                <p style="margin-top: -5px;">{{ comment.text|linebreaks }}</p>
+            </div>
+        {% empty %}
+            <p>No comments here yet :(</p>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+{% endblock content %}

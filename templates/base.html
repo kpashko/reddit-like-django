@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rateit</title>
+    <a href="{% url 'home' %}" style="text-decoration: none; color: black"> <h1>Reddit-like site y'know</h1></a>
+    <div style="float: right">
+    {% if request.user.is_authenticated %}
+    <p>Hello, {{ request.user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
+    {% else %}
+        <p><a href="{% url 'signup' %}">Signup</a> | <a href="{% url 'login' %}">Login</a> </p>
+        <hr>
+    {% endif %}
+    </div>
+</head>
+<body>
+
+{% block content %}
+{% endblock content %}
+
+</body>
+<footer>
+    <hr>
+    <h3>This is footer</h3>
+</footer>
+</html>
