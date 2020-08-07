@@ -29,8 +29,8 @@
     <a class="btn btn-default" href="{% url 'blog:add_comment_to_blog' blog_post.slug %}">Add comment</a>
         {% for comment in blog_post.comments.all %}
             <div class="comment" style="margin: 20px 0 20px 20px; border: black">
-                <div class="date" style="font-size: 80%; font-family: monospace; margin-bottom: 3px;">{{ comment.created_date }}</div>
                 <strong>{{ comment.author }}</strong>
+                <div class="date" style="font-size: 80%; font-family: monospace; margin-bottom: 3px;">{{ comment.created_date }}</div>
                 <p style="margin-top: -5px;">{{ comment.text|linebreaks }}</p>
             </div>
         {% empty %}
